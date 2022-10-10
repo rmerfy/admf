@@ -204,6 +204,11 @@ if ( class_exists( 'WooCommerce' ) ) {
 require get_template_directory() . '/inc/archive-ajax.php';
 
 /**
+ * Ajax Archive products
+ */
+require get_template_directory() . '/inc/archive-products-ajax.php';
+
+/**
  * Ajax Gallery
  */
 require get_template_directory() . '/inc/gallery-ajax.php';

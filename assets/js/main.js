@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     im = new Inputmask("(999) 999-99-99");
   im.mask(phone);
 
+  let currencyMask = document.querySelectorAll("input[type='tel']"),
+  imCurrency = new Inputmask("$");
+  imCurrency.mask(currencyMask);
+
   // Replace img.svg  svg
 
   document.querySelectorAll("img.svg").forEach(function (img) {

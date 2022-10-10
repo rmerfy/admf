@@ -28,36 +28,56 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_before_main_content' );
 
+$page_id = get_queried_object_id();
+
 ?>
 <div class="archive-info">
 	<div class="container">
 		<div class="archive-info__inner">
-		<div class="archive-info__content">
-			<div class="breadcrumbs">
-			<?php 
-				if (function_exists('bcn_display')) {
-					bcn_display();
-				}
-			?>
+			<div class="archive-info__content">
+				<div class="breadcrumbs">
+				<?php 
+					if (function_exists('bcn_display')) {
+						bcn_display();
+					}
+				?>
+				</div>
+				<h1 class="title archive-info__title"><?php woocommerce_page_title(); ?></h1>
+				<?php
+				/**
+				 * Hook: woocommerce_archive_description.
+				 *
+				 * @hooked woocommerce_taxonomy_archive_description - 10
+				 * @hooked woocommerce_product_archive_description - 10
+				 */
+				do_action( 'woocommerce_archive_description' );
+				?>
 			</div>
-			<h1 class="title archive-info__title"><?php woocommerce_page_title(); ?></h1>
 			<?php
-			/**
-			 * Hook: woocommerce_archive_description.
-			 *
-			 * @hooked woocommerce_taxonomy_archive_description - 10
-			 * @hooked woocommerce_product_archive_description - 10
-			 */
-			do_action( 'woocommerce_archive_description' );
+			$args = [
+				'posts_per_page' => 1,
+				'post_type' => 'product',
+				'post_status' => 'published',
+				'post__in' => [get_field('product_spotlight', 'product_cat_'.$page_id)]
+			];
+			$product_query = new WP_Query( $args );
+			
+			if ( $product_query->have_posts() ) {
+				while ( $product_query->have_posts() ) {
+					$product_query->the_post();
+					?>
+				<a class="archive-info__product" href="<?php the_permalink() ?>">
+					<div class="archive-info__product-descr">
+						<span class="archive-info__product-suptitle">Product Spotlight</span>
+						<span class="archive-info__product-title"><?php the_field('product_name') ?></span>
+					</div>
+					<?php the_post_thumbnail( 'full' ) ?>
+				</a>
+				<?php
+				}
+			}
+			wp_reset_postdata();
 			?>
-		</div>
-		<a class="archive-info__product" href="#">
-			<div class="archive-info__product-descr">
-				<span class="archive-info__product-suptitle">Product Spotlight</span>
-				<span class="archive-info__product-title">Naturale</span>
-			</div>
-			<img src="<?echo get_template_directory_uri() ?>/assets/images/archive-page-img.jpeg" alt="archive-img">
-		</a>
 		</div>
 
 	</div>
@@ -66,7 +86,7 @@ do_action( 'woocommerce_before_main_content' );
 	<div class="container">
 		<div class="product-section__inner">
 			<div class="filter">
-				<?php woocommerce_get_sidebar(); ?>
+				<?php get_sidebar(); ?>
 			</div>
 			<button class="filter-btn">Filter</button>
 			<div class="product-items">

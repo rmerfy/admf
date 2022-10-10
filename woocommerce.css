@@ -1284,7 +1284,8 @@ label.inline {
 ul.order_details {
   list-style: none;
   position: relative;
-  margin: 3.706325903em 0;
+  margin: 0 0 30px;
+  padding: 0;
 }
 ul.order_details::before,
 ul.order_details::after {
@@ -1311,7 +1312,7 @@ ul.order_details::after {
   transform: rotate(180deg);
 }
 ul.order_details li {
-  padding: 1em 1.618em;
+  padding: 0 0 15px;
   font-size: 0.8em;
   text-transform: uppercase;
 }
@@ -1670,6 +1671,20 @@ dl.variation dd {
   display: inline-block;
 }
 .woocommerce-MyAccount-content .woocommerce-Pagination {
+  text-align: center;
+}
+
+.woocommerce-table.woocommerce-table--order-details.shop_table tr,
+.woocommerce-table.woocommerce-table--order-details.shop_table th,
+.woocommerce-table.woocommerce-table--order-details.shop_table td {
+  padding: 12px 0;
+}
+
+.woocommerce-table.woocommerce-table--order-details.shop_table {
+  margin-bottom: 50px;
+}
+
+.woocommerce-thankyou-order-received {
   text-align: center;
 }
 

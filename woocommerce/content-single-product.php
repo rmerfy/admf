@@ -19,13 +19,6 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action( 'woocommerce_before_single_product' );
-
 if ( post_password_required() ) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
@@ -41,6 +34,14 @@ if ( post_password_required() ) {
 				}
 				?>
 			</div>
+			<?php 
+			/**
+			 * Hook: woocommerce_before_single_product.
+			 *
+			 * @hooked woocommerce_output_all_notices - 10
+			 */
+			do_action( 'woocommerce_before_single_product' );
+			?>
 		</div>
 	</div>
 	<section class="product-main">
@@ -117,36 +118,62 @@ if ( post_password_required() ) {
 				}
 				?>
 				<div class="product-content__prices">
-				<p class="product-content__price-sqft">
-					<span>$12.69</span> per sq. ft.
-				</p>
-				<p class="product-content__price-carton">
-					<span>$174.87</span> per carton (13.78 sq. ft.)
-				</p>
+				<?php 
+					$price = $product->get_price();
+					$price_sqft = get_field('price_sqft');
+					$box_sqft = get_field('box_sqft');
+					$pickup_price = bcdiv(($price_sqft*0.95)-0.1, 1, 2);
+					$free_delivery = ceil(500/$box_sqft);
+					if($price_sqft) {
+						echo '<p class="product-content__price-sqft"><span>$'.$price_sqft.'</span> per sq. ft.</p>';
+					}
+					echo '<p class="product-content__price-carton"><span>$'.$price.'</span> per carton ('.$box_sqft.' sq. ft.)</p>'
+				?>
 				</div>
 				<p class="product-content__price-pickup">
-				Local Pick-up Price: <span>$11.96</span> per sq. ft.
+				Local Pick-up Price: <span>$<?php echo $pickup_price?></span> per sq. ft.
 				</p>
 				<div class="product-content__add-to-cart">
 				<?php woocommerce_template_single_add_to_cart() ?>
-				<div class="product-content__sample">
-					<p>
-					Don't hesitate to get up <br> to two free samples per color:
-					</p>
-					<button class="btn">Get sample</button>
 				</div>
-				</div>
-				<p class="product-content__stair-trim">Don't forget to purchase <a class="hover-animation" href="#">Stair & Trim.</a></p>
+				
+				<?php 
+				$terms = get_the_terms( $product->get_id(), 'product_cat' );
+				$product_cat_ids = [];
+				foreach ($terms as $term) {
+					$product_cat_ids[] = $term->term_id;
+				}
+
+				// if is all-flooring
+
+				if(in_array('23', $product_cat_ids)) :
+				
+				$box_sqft = get_field('box_sqft');
+				
+				?>
+				<p class="product-content__stair-trim">Don't forget to purchase <a class="hover-animation" href="/stair-and-trim/">Stair & Trim.</a></p>
 				<div class="product-content__calc">
 				<p>
 					Calculate how many boxes you'll need<br> to purchase based on square footage:
 				</p>
-				<input type="number" class="product-content__calc-input" placeholder="Enter sq. ft. Needed">
+				<input type="number" data-perbox="<?php echo $box_sqft ?>" class="product-content__calc-input" placeholder="Enter sq. ft. Needed">
+				<script>
+						
+					// calc square footage
+					let calcInput = document.querySelector('.product-content__calc-input');
+					let perBox = calcInput.dataset.perbox;
+					let qty = document.querySelector('.input-text.qty.text');
+					calcInput.addEventListener('keyup', (e) => {
+						let calcValue = e.target.value;
+						qty.value = Math.ceil(calcValue/perBox);
+					});
+				</script>
 				</div>
 				<p class="product-content__compare">Want to see similar colors? <a class="hover-animation" href="#">Compare.</a></p>
 				<p>Consider adding 7-12% for waste.</p>
-				<p>Free curbside delivery with any purchase of <b>21</b> boxes or more.</p>
-				<p>Also available in Oil: <a class="hover-animation" href="#">Ravenna Oil</a></p>
+				<p>Free curbside delivery with any purchase of <b><?php echo $free_delivery ?></b> boxes or more.</p>
+				<!-- <p>Also available in Oil: <a class="hover-animation" href="#">Ravenna Oil</a></p> -->
+				<?php endif; ?>
 			</div>
 			</div>
 			<div class="product-main__inner">
@@ -187,32 +214,36 @@ if ( post_password_required() ) {
 				</div>
 			</div>
 			</div>
+			<?php
+			// if is all-flooring
+			if(in_array('23', $product_cat_ids)) : ?>
 			<div class="product-main__downloads">
 			<h3 class="product-main__title title-2 title--center">
 				Downloads
 			</h3>
 			<ul class="product-main__downloads-items">
 				<li>
-				<a class="btn product-main__downloads-link" href="#">
+				<a class="btn product-main__downloads-link" target="_blank" href="/wp-content/uploads/2022/09/ADMF-CareMaintenance-1.pdf">
 					<span>Care and Maintenance Guide</span>
 				</a>
 				</li>
 				<li>
-				<a class="btn product-main__downloads-link" href="#">
+				<a class="btn product-main__downloads-link" target="_blank" href="/wp-content/uploads/2022/09/ADMF-Install_Instructions-1.pdf">
 					<span>Installation Instructions</span>
 				</a>
 				</li>
 				<li>
-				<a class="btn product-main__downloads-link" href="#">
+				<a class="btn product-main__downloads-link" target="_blank" href="/wp-content/uploads/2022/09/ADMF-Warranty_Guide-1.pdf">
 					<span>25-Year Warranty</span></a>
 				</li>
 				<li>
-				<a class="btn product-main__downloads-link" href="#">
+				<a class="btn product-main__downloads-link" target="_blank" href="/cleaning-videos/">
 					<span>Learn how to clean your floors</span>
 				</a>
 				</li>
 			</ul>
 			</div>
+			<?php endif; ?>
 		</div>
 	</section>
 </div>

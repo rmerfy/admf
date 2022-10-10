@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $(".gallery-btn").eq(i).addClass("gallery-btn--act");
       });
     }
-  
+
     function galleryAjax(page) {
       $.ajax({
         type: "POST",
@@ -82,58 +82,113 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   // archive
-
-  // next/prev event
-  let currentUrl = window.location.href;
-  window.addEventListener(
-    "popstate",
-    function (e) {
-      let clickedPage = parseInt(location.href.match(/\d+/));
-      Number.isInteger(clickedPage) ? clickedPage : (clickedPage = 1);
-      archiveAjax(clickedPage, currentUrl);
-    },
-    false
-  );
-
-  function updateLinks() {
-    document.querySelectorAll("a.page-numbers").forEach((page) => {
-      page.addEventListener("click", (e) => {
-        e.preventDefault();
-        history.pushState(currentUrl, "", e.target.href);
-        let clickedPage = parseInt(e.target.href.match(/\d+/));
+  if (document.querySelector(".archive.category")) {
+    // next/prev event
+    let currentUrl = window.location.href;
+    window.addEventListener(
+      "popstate",
+      function (e) {
+        let clickedPage = parseInt(location.href.match(/\d+/));
         Number.isInteger(clickedPage) ? clickedPage : (clickedPage = 1);
         archiveAjax(clickedPage, currentUrl);
+      },
+      false
+    );
+
+    function updateLinks() {
+      document.querySelectorAll("a.page-numbers").forEach((page) => {
+        page.addEventListener("click", (e) => {
+          e.preventDefault();
+          history.pushState(currentUrl, "", e.target.href);
+          let clickedPage = parseInt(e.target.href.match(/\d+/));
+          Number.isInteger(clickedPage) ? clickedPage : (clickedPage = 1);
+          archiveAjax(clickedPage, currentUrl);
+        });
       });
-    });
+    }
+
+    updateLinks();
+
+    function archiveAjax(page, link) {
+      $.ajax({
+        type: "POST",
+        url: "/wp-admin/admin-ajax.php",
+        dataType: "html",
+        data: {
+          action: "archive_posts",
+          page: page,
+          link: link,
+        },
+        beforeSend: function (xhr) {
+          $(".archive-posts__inner").addClass("loading");
+          window.scrollTo({
+            top: 0,
+          });
+        },
+        success: function (res) {
+          $(".archive-posts__inner").html(res);
+          setTimeout(() => {
+            $(".archive-posts__inner").removeClass("loading");
+          }, 500);
+          updateLinks();
+        },
+      });
+    }
   }
 
-  updateLinks();
+  // archive products
+  if (document.querySelector(".archive.tax-product_cat")) {
+    // next/prev event
+    let currentUrl = window.location.href;
+    window.addEventListener(
+      "popstate",
+      function (e) {
+        let clickedPage = parseInt(location.href.match(/\d+/));
+        Number.isInteger(clickedPage) ? clickedPage : (clickedPage = 1);
+        archiveProductsAjax(clickedPage, currentUrl);
+      },
+      false
+    );
 
-  function archiveAjax(page, link) {
-    $.ajax({
-      type: "POST",
-      url: "/wp-admin/admin-ajax.php",
-      dataType: "html",
-      data: {
-        action: "archive_posts",
-        page: page,
-        link: link,
-      },
-      beforeSend: function (xhr) {
-        $(".archive-posts__inner").addClass("loading");
-        window.scrollTo({
-          top: 0,
+    function updateLinks() {
+      document.querySelectorAll("a.page-numbers").forEach((page) => {
+        page.addEventListener("click", (e) => {
+          e.preventDefault();
+          history.pushState(currentUrl, "", e.target.href);
+          let clickedPage = parseInt(e.target.href.match(/\d+/));
+          Number.isInteger(clickedPage) ? clickedPage : (clickedPage = 1);
+          archiveProductsAjax(clickedPage, currentUrl);
         });
-      },
-      success: function (res) {
-        $(".archive-posts__inner").html(res);
-        setTimeout(() => {
-          $(".archive-posts__inner").removeClass("loading");
-        }, 500);
-        updateLinks();
-      },
-    });
+      });
+    }
+
+    updateLinks();
+
+    function archiveProductsAjax(page, link) {
+      $.ajax({
+        type: "POST",
+        url: "/wp-admin/admin-ajax.php",
+        dataType: "html",
+        data: {
+          action: "archive_products_posts",
+          page: page,
+          link: link,
+        },
+        beforeSend: function (xhr) {
+          $(".product-items").addClass("loading");
+          window.scrollTo({
+            top: 0,
+          });
+        },
+        success: function (res) {
+          $(".product-items").html(res);
+          setTimeout(() => {
+            $(".product-items").removeClass("loading");
+          }, 500);
+          updateLinks();
+        },
+      });
+    }
   }
 });
