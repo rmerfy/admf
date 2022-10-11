@@ -38,7 +38,7 @@ get_header();
     <div class="container">
         <div class="product-items decor decor--left">
         <h3 class="title">Engineered Hardwood</h3>
-        <ul class="product-items__list">
+        <ul class="product-items__list" data-category="engineered-hardwood-catalog">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
@@ -53,11 +53,11 @@ get_header();
         wp_reset_postdata();
         ?>
         </ul>
-        <a class="btn btn--black product-items__link" href="archive-products.html">Show more</a>
+        <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
         <h3 class="title">Luxury Vinyl Plank</h3>
-        <ul class="product-items__list">
+        <ul class="product-items__list" data-category="vinyl-flooring">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
@@ -72,11 +72,11 @@ get_header();
         wp_reset_postdata();
         ?>
         </ul>
-        <a class="btn btn--black product-items__link" href="archive-products.html">Show more</a>
+        <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
         <h3 class="title">Stair and Trim</h3>
-        <ul class="product-items__list">
+        <ul class="product-items__list" data-category="stair-and-trim">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
@@ -91,11 +91,11 @@ get_header();
         wp_reset_postdata();
         ?>
         </ul>
-        <a class="btn btn--black product-items__link" href="archive-products.html">Show more</a>
+        <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
         <h3 class="title">Care and Maintainance</h3>
-        <ul class="product-items__list">
+        <ul class="product-items__list" data-category="care-and-maintenance">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
@@ -110,11 +110,11 @@ get_header();
         wp_reset_postdata();
         ?>
         </ul>
-        <a class="btn btn--black product-items__link" href="archive-products.html">Show more</a>
+        <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
         <h3 class="title">Adhesives</h3>
-        <ul class="product-items__list">
+        <ul class="product-items__list" data-category="adhesives">
         <?php
         $posts = get_posts([
             'numberposts' => 4,

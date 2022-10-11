@@ -225,3 +225,38 @@ if ( ! function_exists( 'adm_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+// cart auto update
+add_action('wp_footer', 'cart_update_qty_script');
+
+function cart_update_qty_script()
+{
+    if (is_cart()):
+    ?>
+    <script>
+        jQuery('div.woocommerce').on('change', '.qty', function(){
+            jQuery("[name='update_cart']").removeAttr("disabled").trigger("click");
+        });
+    </script>
+    <?php
+endif;
+}
+
+// ajax cart update
+
+add_action('wp_ajax_update_cart_counter', 'update_cart_counter');
+add_action('wp_ajax_nopriv_update_cart_counter', 'update_cart_counter');
+
+function update_cart_counter()
+{
+	$response = '<span class="icon-cart"></span>';
+    if(WC()->cart->get_cart_contents_count() <= 0) {
+		echo $response;
+        wp_die();
+    }
+
+    $response .= '<span class="cart-btn__counter">' . WC()->cart->get_cart_contents_count() . '</span>';
+
+    echo $response;
+    wp_die();
+}

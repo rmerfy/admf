@@ -203,10 +203,6 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 require get_template_directory() . '/inc/archive-ajax.php';
 
-/**
- * Ajax Archive products
- */
-require get_template_directory() . '/inc/archive-products-ajax.php';
 
 /**
  * Ajax Gallery
@@ -218,6 +214,10 @@ require get_template_directory() . '/inc/gallery-ajax.php';
  */
 require get_template_directory() . '/inc/frontpage-ajax.php';
 
+/**
+ * Ajax Catalog
+ */
+require get_template_directory() . '/inc/catalog-ajax.php';
 
 
 add_filter( 'excerpt_length', function(){

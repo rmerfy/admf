@@ -85,7 +85,7 @@ $page_id = get_queried_object_id();
 <section class="product-section product-section--top-line">
 	<div class="container">
 		<div class="product-section__inner">
-			<div class="filter">
+			<div class="filter-wrapper">
 				<?php get_sidebar(); ?>
 			</div>
 			<button class="filter-btn">Filter</button>

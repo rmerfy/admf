@@ -161,11 +161,10 @@
 			<span class="icon-message"></span>
 			</button>
 		</li>
-		<li class="cart-btn">
-			<button title="Cart">
+		<li>
+			<a class="cart-btn" href="/cart/">
 			<span class="icon-cart"></span>
-			<span class="cart-btn__counter">99</span>
-			</button>
+			</a>
 		</li>
 		</ul>
 		<div class="search-bar">

@@ -13,10 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     im = new Inputmask("(999) 999-99-99");
   im.mask(phone);
 
-  let currencyMask = document.querySelectorAll("input[type='tel']"),
-  imCurrency = new Inputmask("$");
-  imCurrency.mask(currencyMask);
-
   // Replace img.svg  svg
 
   document.querySelectorAll("img.svg").forEach(function (img) {
@@ -208,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // filter
 
   const filterBtn = document.querySelector(".filter-btn"),
-    filter = document.querySelector(".filter");
+    filter = document.querySelector(".filter-wrapper");
 
   if (filter) {
     filterBtn.addEventListener("click", () => {

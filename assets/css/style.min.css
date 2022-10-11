@@ -1249,6 +1249,22 @@ button.swiper-pagination-bullet {
     transform: translateY(0);
   }
 }
+
+@keyframes fadeIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInFromNone {
   0% {
     display: none;
@@ -1267,6 +1283,26 @@ button.swiper-pagination-bullet {
     transform: translateY(0);
   }
 }
+
+@keyframes fadeInDown {
+  0% {
+    display: none;
+    opacity: 0;
+    -webkit-transform: translateY(-20%);
+    transform: translateY(-20%);
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
 @-webkit-keyframes move {
   0% {
     left: 0;
@@ -1490,7 +1526,8 @@ picture {
   position: relative;
 }
 
-.loading .archive-posts__link::before {
+.loading .archive-posts__link::before,
+.loading .product-item__link::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1501,7 +1538,8 @@ picture {
   z-index: 1;
 }
 
-.loading .archive-posts__link::after {
+.loading .archive-posts__link::after,
+.loading .product-item__link::after {
   content: "";
   position: absolute;
   top: 0;
@@ -1521,7 +1559,10 @@ picture {
 
 .loading .archive-posts__item-title,
 .loading .archive-posts__item-excerpt,
-.loading .archive-posts__item-read-more {
+.loading .archive-posts__item-read-more,
+.loading .product-item__title,
+.loading .product-item__subtitle,
+.loading .add_to_cart_button {
   color: rgba(0, 0, 0, 0);
   position: relative;
   overflow: hidden;
@@ -1531,7 +1572,10 @@ picture {
 
 .loading .archive-posts__item-title::after,
 .loading .archive-posts__item-excerpt::after,
-.loading .archive-posts__item-read-more::after {
+.loading .archive-posts__item-read-more::after,
+.loading .product-item__title::after,
+.loading .product-item__subtitle::after,
+.loading .add_to_cart_button::after {
   content: "";
   position: absolute;
   left: 0;
@@ -1546,6 +1590,10 @@ picture {
     rgba(255, 255, 255, 0)
   );
   animation: shimmer 2s infinite ease-in-out;
+}
+
+.loading .product-item__link {
+  position: relative;
 }
 
 @keyframes shimmer {
@@ -1710,7 +1758,7 @@ input[type="radio"]:checked:before {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 .hover-animation,
 .menu__list a,
@@ -2210,6 +2258,8 @@ input[type="number"] {
   color: #fff;
   padding: 2px;
   font-size: 12px;
+  text-align: center;
+  min-width: 18px;
 }
 .main-slider .swiper-slide {
   display: -webkit-box;
@@ -2800,7 +2850,11 @@ input[type="number"] {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 0 0 30px;
+  padding: 0 0 40px;
+}
+
+.product-items:not(:last-child) {
+  margin-bottom: 60px;
 }
 
 .premmerce-filter-ajax-container {
@@ -2815,6 +2869,10 @@ input[type="number"] {
   flex-direction: column;
 }
 
+.widget_premmerce_filter_active_filters_widget {
+  margin-top: 15px;
+}
+
 .product-items__list {
   margin: 0;
   padding: 0;
@@ -2823,7 +2881,7 @@ input[type="number"] {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px 30px;
 }
-.product-items__link {
+.product-items__btn {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2831,7 +2889,7 @@ input[type="number"] {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  margin: 60px auto 15px auto;
+  margin: 30px auto auto;
 }
 .product-item {
   display: -webkit-box;
@@ -2885,10 +2943,12 @@ input[type="number"] {
   font-size: 22px;
   text-transform: uppercase;
   margin: 0 0 15px;
+  width: 100%;
 }
 .product-item__subtitle {
   display: inline-block;
   margin: auto 0 30px;
+  width: 100%;
 }
 .product-item__btns {
   display: -webkit-box;
@@ -2904,6 +2964,7 @@ input[type="number"] {
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
 .product-item__compare {
   margin: 0 0 0 10px;
   border: none;
@@ -2939,6 +3000,9 @@ input[type="number"] {
   display: grid;
   grid-template-columns: 4fr 6fr;
   grid-gap: 30px;
+}
+.term-description {
+  margin: 0 0 30px;
 }
 .term-description p {
   margin: 0;
@@ -2996,7 +3060,7 @@ input[type="number"] {
 .archive-info__title {
   margin: 0 0 30px;
 }
-.filter {
+.filter-wrapper {
   padding: 0 0 30px;
 }
 .filter-btn {
@@ -3051,7 +3115,7 @@ input[type="number"] {
 }
 
 .filter__slider-control-column::before {
-  content: '$';
+  content: "$";
   position: absolute;
   left: 0;
   top: 50%;
@@ -3933,8 +3997,8 @@ div.nav-links {
   -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-  -webkit-animation: fadeInFromNone 0.5s ease-in-out;
-  animation: fadeInFromNone 0.5s ease-in-out;
+  -webkit-animation: fadeInDown 0.5s ease-in-out;
+  animation: fadeInDown 0.5s ease-in-out;
   z-index: 999;
 }
 .search-bar--active {
@@ -3955,8 +4019,8 @@ div.nav-links {
   -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
   z-index: 998;
-  -webkit-animation: fadeInFromNone 0.2s ease-in-out;
-  animation: fadeInFromNone 0.2s ease-in-out;
+  -webkit-animation: fadeIn 0.2s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
 }
 .search-bar-layout--active {
   display: block;
@@ -3980,7 +4044,9 @@ div.nav-links {
     height: 280px;
   }
   .loading .archive-posts__link::before,
-  .loading .archive-posts__link::after {
+  .loading .archive-posts__link::after,
+  .loading .product-item__link::after,
+  .loading .product-item__link::before {
     height: 280px;
   }
 }
@@ -4109,7 +4175,8 @@ div.nav-links {
     height: 220px;
   }
   .loading .archive-posts__link::before,
-  .loading .archive-posts__link::after {
+  .loading .archive-posts__link::after,
+  .loading .product-item__link::after {
     height: 220px;
   }
   .archive-posts__item-title {
@@ -4267,9 +4334,9 @@ div.nav-links {
   .product-item__compare {
     margin: 10px 0 0;
   }
-  .filter {
+  .filter-wrapper {
     position: fixed;
-    overflow-y: scroll;
+    overflow: hidden scroll;
     top: 0;
     bottom: 0;
     right: 0;
@@ -4278,8 +4345,7 @@ div.nav-links {
     transform: translateX(110%);
     z-index: 9999;
     background: #fff;
-    width: 290px;
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 50px 20px;
     -webkit-transition: all 0.9s ease-in-out;
     transition: all 0.9s ease-in-out;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
@@ -4294,7 +4360,7 @@ div.nav-links {
     justify-content: flex-start;
     height: 100%;
   }
-  .filter.active {
+  .filter-wrapper.active {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);

@@ -170,57 +170,6 @@ get_header();
         <div class="flooring__footer">
             <button class="btn btn--center flooring__show-more">Show more</button>
         </div>
-        <script>
-        let moreBtn = document.querySelector('.flooring__show-more');
-        let page = 1;
-        moreBtn.addEventListener('click', () => {
-            page++;
-            frontpageAjax(page);
-        });
-
-        
-        let flooringFooter = document.querySelector('.flooring__footer').offsetTop;
-
-
-        document.addEventListener("scroll", ajaxScroll);
-
-        function ajaxScroll() {
-            let currentScroll = window.innerHeight + window.pageYOffset;
-            
-            if(currentScroll >= flooringFooter && !document.querySelector('.flooring').classList.contains('loading')) {
-                page++;
-                frontpageAjax(page);
-            }
-        }
-
-
-        function frontpageAjax(page) {
-            $.ajax({
-            type: "POST",
-            url: "/wp-admin/admin-ajax.php",
-            dataType: "html",
-            data: {
-                action: "frontpage_posts",
-                page: page,
-            },
-            beforeSend: function (xhr) {
-                $('.flooring').addClass('loading');
-                $('.flooring__show-more').text('loading');
-            },
-            success: function (res) {
-                if(res) {
-                    $(".flooring__list").append(res);
-                    $('.flooring').removeClass('loading');
-                    $('.flooring__show-more').text('Show more');
-                } else {
-                    document.removeEventListener('scroll', ajaxScroll);
-                    $('.flooring__show-more').addClass('d-none');
-                    $('.flooring').removeClass('loading');
-                }
-            }
-            });
-        }
-        </script>
     </div>
     </section>
     <section class="customers-reviews">
