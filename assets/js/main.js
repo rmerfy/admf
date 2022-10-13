@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     speed: 400,
     slidesPerView: 1,
     effect: "fade",
+    allowTouchMove:false,
     fadeEffect: {
       crossFade: true,
     },

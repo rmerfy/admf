@@ -19,36 +19,64 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( $related_products ) : ?>
+global $product;
 
-	<section class="related products">
 
-		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
+$cats = wp_get_post_terms( $product->id, 'product_cat' );
+$category = $product->category_ids[0];
 
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
-		
-		<?php woocommerce_product_loop_start(); ?>
+foreach($cats as $cat){
+	if (str_contains($cat->name, 'Collection')) {
+		$category = $cat->term_id;
+	}
+}
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+$posts = query_posts([
+    'post_type'             => 'product',
+    'post_status'           => 'publish',
+    'ignore_sticky_posts'   => 1,
+    'posts_per_page'        => 4,
+	'orderby' 				=> 'menu_order',
+    'order' 				=> 'ACS',
+	'meta_query'			=> [
+		'relation' => 'AND',
+		[
+			'key' => '_thumbnail_id',
+			'value' => '0',
+			'compare' => '>'
+		],
+		[
+			'key'     => '_sku',
+			'value'   => $product->sku,
+			'compare' => 'NOT IN',
+		]
+	],
+    'tax_query'             => [
+        [
+            'taxonomy'      => 'product_cat',
+            'terms'         => $category,
+            'compare'      => 'IN' 
+        ]
+    ]
+]);
 
-					<?php
-					$post_object = get_post( $related_product->get_id() );
+if ( $posts ) {
+	echo '<section class="product-section related products">
+		<div class="container">
+		<div class="product-items decor decor--left">
+		<h2 class="title">Related products</h2>';
+	woocommerce_product_loop_start();
 
-					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+	while (have_posts()): the_post();
 
-					wc_get_template_part( 'content', 'product' );
-					?>
+	wc_get_template_part( 'content', 'product' );
 
-			<?php endforeach; ?>
+	endwhile;
+	wp_reset_query();
 
-		<?php woocommerce_product_loop_end(); ?>
+	woocommerce_product_loop_end();
+	echo '</div>
+		</div>
+		</section>';
+}
 
-	</section>
-	<?php
-endif;
-
-wp_reset_postdata();

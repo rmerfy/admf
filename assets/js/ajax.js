@@ -156,6 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
   $(document.body).on("added_to_cart", function () {
     updateCounter();
   });
+  $(document.body).on("updated_cart_totals", function () {
+    updateCounter();
+  });
 
   updateCounter();
 
@@ -235,19 +238,21 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
           action: "catalog_posts",
           page: page,
-          category: category
+          category: category,
         },
         beforeSend: function (xhr) {
           $(".product-items__btn").eq(i).text("loading");
+          $(".product-items__btn").eq(i).prop("disabled", true);
         },
         success: function (res) {
-          console.log('page '+page);
-          console.log('max page '+res.max_page);
+          console.log("page " + page);
+          console.log("max page " + res.max_page);
           if (page == res.max_page) {
             $(".product-items__btn").eq(i).addClass("d-none");
             $(".product-items__list").eq(i).append(res.content);
           } else {
             $(".product-items__list").eq(i).append(res.content);
+            $(".product-items__btn").eq(i).prop("disabled", false);
             $(".product-items__btn").eq(i).text("Show more");
           }
         },

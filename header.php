@@ -80,41 +80,41 @@
 			<div class="container">
 			<div class="mega-menu__inner">
 				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="#">All flooring</a>
+				<a class="mega-menu__item-title" href="/all-flooring/">All flooring</a>
 				<div class="mega-menu__item-content">
 					<ul class="mega-menu__item-list">
 					<li>Plank width</li>
-					<li><a href="#">10-1/4" -> Up</a></li>
-					<li><a href="#">8-5/8" -> 9-1/2"</a></li>
-					<li><a href="#">Under 7-1/2"</a></li>
+					<li><a href="/all-flooring?filter_plank-width=10-1-4″%2C31-1-2″&query_type_plank-width=or">10-1/4" -> Up</a></li>
+					<li><a href="/all-flooring?filter_plank-width=8-5-8″%2C8-7-8″%2C9″%2C9-3-8″%2C9-1-2″&query_type_plank-width=or">8-5/8" -> 9-1/2"</a></li>
+					<li><a href="/all-flooring?filter_plank-width=7″%2C7-13-16″%2C7-1-2″%2C7-1-8″%2C6-1-2″%2C4″%2C4-3-4″&query_type_plank-width=or">Under 7-1/2"</a></li>
 					</ul>
 					<ul class="mega-menu__item-list">
 					<li>Grade</li>
-					<li><a href="#">Select</a></li>
-					<li><a href="#">Character</a></li>
-					<li><a href="#">Rustic</a></li>
+					<li><a href="/all-flooring?filter_grade=select-ab%2Cselect&query_type_grade=or">Select</a></li>
+					<li><a href="/all-flooring?filter_grade=abcd-character&query_type_grade=or">Character</a></li>
+					<li><a href="/all-flooring?filter_grade=rustic-select%2Crustic&query_type_grade=or">Rustic</a></li>
 					</ul>
 				</div>
 				</div>
 				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="#">Engineered Hardwood</a>
+				<a class="mega-menu__item-title" href="/engineered-hardwood-catalog/">Engineered Hardwood</a>
 				<div class="mega-menu__item-content">
 					<ul class="mega-menu__item-list">
 					<li>Finish</li>
-					<li><a href="#">Oil</a></li>
-					<li><a href="#">Lacquer</a></li>
-					<li><a href="#">Unfinished</a></li>
+					<li><a href="/all-flooring?filter_finish=oil&query_type_finish=or">Oil</a></li>
+					<li><a href="/all-flooring?filter_finish=uv-lacquer&query_type_finish=or">Lacquer</a></li>
+					<li><a href="/all-flooring?filter_finish=unfinished&query_type_finish=or">Unfinished</a></li>
 					</ul>
 					<ul class="mega-menu__item-list">
 					<li>Color</li>
-					<li><a href="#">Light</a></li>
-					<li><a href="#">Grey</a></li>
-					<li><a href="#">Natural/Dark</a></li>
+					<li><a href="/all-flooring?filter_color=light&query_type_color=or">Light</a></li>
+					<li><a href="/all-flooring?filter_color=grey&query_type_color=or">Grey</a></li>
+					<li><a href="/all-flooring?filter_color=dark%2Cnatural&query_type_color=or">Natural/Dark</a></li>
 					</ul>
 				</div>
 				</div>
 				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="#">Vinyl<span class="new-label">new</span></a>
+				<a class="mega-menu__item-title" href="/vinyl-catalog/">Vinyl<span class="new-label">new</span></a>
 				<div class="mega-menu__item-content">
 					<ul class="mega-menu__item-list">
 					<li>Pattern</li>
@@ -136,13 +136,13 @@
 				</div>
 				</div>
 				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="#">Overstock</a>
+				<a class="mega-menu__item-title" href="/overstock/">Overstock</a>
 				<div class="mega-menu__item-content">
 					<ul class="mega-menu__item-list">
 					<li>Floor care & Accessories</li>
-					<li><a href="#">Adhesives</a></li>
-					<li><a href="#">Stair & Trim</a></li>
-					<li><a href="#">Care & Maintence</a></li>
+					<li><a href="/adhesives/">Adhesives</a></li>
+					<li><a href="/stair-and-trim/">Stair & Trim</a></li>
+					<li><a href="/care-and-maintenance/">Care & Maintence</a></li>
 					</ul>
 				</div>
 				</div>

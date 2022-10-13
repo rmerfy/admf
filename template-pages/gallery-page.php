@@ -56,7 +56,7 @@ get_header();
                   </ul>
               <?php endif; ?>
                 <div class="tab-bottom-btns">
-                  <a class="btn btn--black" href="<?php the_sub_field('link') ?>">See flooring</a>
+                  <a class="btn btn--black" target="_blank" href="<?php the_sub_field('link') ?>">See flooring</a>
                   <a class="btn" href="#gallery-control">Back to top</a>
                 </div>
           <?php

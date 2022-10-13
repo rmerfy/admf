@@ -246,4 +246,5 @@ if ( post_password_required() ) {
 			<?php endif; ?>
 		</div>
 	</section>
+	<?php woocommerce_output_related_products(); ?>
 </div>

@@ -43,6 +43,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	</div>
 	</a>
 	<div class="product-item__btns">
-	<?php woocommerce_template_loop_add_to_cart() ?>
+	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
 	</div>
 </li>

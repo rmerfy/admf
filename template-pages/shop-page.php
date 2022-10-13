@@ -26,18 +26,18 @@ get_header();
         Quick Links
         </h3>
         <div class="quick-links__items">
-        <a class="btn scrollto" href="/engineered-hardwood-catalog/">Engineered Hardwood</a>
-        <a class="btn scrollto" href="/vinyl-catalog/">Vinyl</a>
-        <a class="btn scrollto" href="/stair-and-trim/">Stair & Trim</a>
-        <a class="btn scrollto" href="/care-and-maintenance/">Care & Maintainance</a>
-        <a class="btn scrollto" href="/adhesives/">Adhesives</a>
+        <a class="btn" href="/engineered-hardwood-catalog/">Engineered Hardwood</a>
+        <a class="btn" href="/vinyl-catalog/">Vinyl</a>
+        <a class="btn" href="/stair-and-trim/">Stair & Trim</a>
+        <a class="btn" href="/care-and-maintenance/">Care & Maintainance</a>
+        <a class="btn" href="/adhesives/">Adhesives</a>
         </div>
     </div>
     </section>
     <section class="product-section">
     <div class="container">
         <div class="product-items decor decor--left">
-        <h3 class="title">Engineered Hardwood</h3>
+        <h3 class="title"><a href="/engineered-hardwood-catalog/">Engineered Hardwood</a></h3>
         <ul class="product-items__list" data-category="engineered-hardwood-catalog">
         <?php
         $posts = get_posts([
@@ -56,13 +56,13 @@ get_header();
         <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
-        <h3 class="title">Luxury Vinyl Plank</h3>
-        <ul class="product-items__list" data-category="vinyl-flooring">
+        <h3 class="title"><a href="/vinyl-catalog/">Luxury Vinyl Plank</a></h3>
+        <ul class="product-items__list" data-category="vinyl-catalog">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
             'post_type'   => 'product',
-            'product_cat' => 'vinyl-flooring'
+            'product_cat' => 'vinyl-catalog'
         ]);
 
         foreach ( $posts as $post ){
@@ -75,7 +75,7 @@ get_header();
         <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
-        <h3 class="title">Stair and Trim</h3>
+        <h3 class="title"><a href="/stair-and-trim/">Stair & Trim</a></h3>
         <ul class="product-items__list" data-category="stair-and-trim">
         <?php
         $posts = get_posts([
@@ -94,7 +94,7 @@ get_header();
         <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
-        <h3 class="title">Care and Maintainance</h3>
+        <h3 class="title"><a href="/care-and-maintenance/">Care & Maintainance</a></h3>
         <ul class="product-items__list" data-category="care-and-maintenance">
         <?php
         $posts = get_posts([
@@ -113,7 +113,7 @@ get_header();
         <button class="btn btn--black product-items__btn">Show more</button>
         </div>
         <div class="product-items decor decor--left">
-        <h3 class="title">Adhesives</h3>
+        <h3 class="title"><a href="/adhesives/">Adhesives</a></h3>
         <ul class="product-items__list" data-category="adhesives">
         <?php
         $posts = get_posts([

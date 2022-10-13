@@ -21,7 +21,7 @@ function frontpage_posts()
     while ( $query->have_posts() ) {
         $query->the_post();
         ?>
-        <li class="flooring__list-item">
+        <li class="flooring__list-item animate__animated animate__fadeInUp">
             <a href="<?php the_permalink() ?>">
             <div class="flooring__list-front">
                 <?php the_post_thumbnail( 'medium' ) ?>

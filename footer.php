@@ -159,7 +159,6 @@
       </div>
     </footer><!-- #colophon -->
 </div><!-- #page -->
-
 <div class="modal-callback d-none">
 	<div class="modal-form">
 		<h4 class="title modal-form__form-title">

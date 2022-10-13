@@ -306,3 +306,39 @@ function hide_products_without_image( $query ) {
 }
 
 add_action( 'woocommerce_product_query', 'hide_products_without_image' );
+
+// sample button single product
+
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+ 
+add_action( 'woocommerce_after_shop_loop_item', 'custom_view_product_button', 10);
+function custom_view_product_button() {
+	global $product;
+	$link = $product->get_permalink();
+	$id = $product->id;
+	$is_flooring = false;
+
+	$cats = wp_get_post_terms( $id, 'product_cat' );
+	foreach($cats as $cat){
+		if (str_contains($cat->slug, 'all-flooring')) {
+			$is_flooring = true;
+		}
+	}
+
+	if($is_flooring) echo '<form class="cart" action="'.$link.'" method="post" enctype="multipart/form-data"><button type="submit" name="simple-add-to-cart" value="'.$id.'" id="woo-free-sample-button" class="add_to_cart_button button btn">Get sample</button></form>';
+}
+
+
+
+function before_add_to_cart_btn(){
+	echo '<p>Some custom text before</p>';
+}
+
+add_action( 'woocommerce_before_add_to_cart_button', 'before_add_to_cart_btn' );
+
+function after_add_to_cart_btn(){
+	echo '<p>Some custom text after</p>';
+}
+
+add_action( 'woocommerce_after_add_to_cart_button', 'after_add_to_cart_btn' );
