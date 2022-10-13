@@ -1426,12 +1426,14 @@ body.lock {
 }
 input,
 textarea,
-button {
+button,
+select {
   outline: none;
   font-size: 14px;
 }
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border-color: #000;
   box-shadow: 0 0 0 0.25rem rgba(185, 222, 22, 0.5);
 }
@@ -1462,7 +1464,8 @@ a:hover {
   text-decoration: none;
 }
 input,
-textarea {
+textarea,
+select {
   padding: 15px 25px;
   border: 1px solid #000;
 }
@@ -3319,7 +3322,6 @@ input[type="number"] {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background: #f5f5f5;
   max-width: 130px;
 }
 .product-quantity .qib-container {
@@ -3338,12 +3340,6 @@ form.cart button[type="submit"]:not(#qib_id):not(#qib_id),
 form.cart .qib-container + div:not(#qib_id):not(#qib_id) {
   display: flex;
   align-items: center;
-}
-
-form.cart button[type="submit"]:not(#qib_id):not(#qib_id):not(_):not(_),
-.qib-button:not(#qib_id):not(#qib_id),
-.qib-container .quantity input.qty:not(#qib_id):not(#qib_id) {
-  height: 49px !important;
 }
 
 .qib-container .quantity input.qty:not(#qib_id):not(#qib_id),
@@ -4076,7 +4072,8 @@ div.nav-links {
   border-color: #eee;
 }
 
-.woofc-area.woofc-style-02 .woofc-area-bot .woofc-data, .woofc-area.woofc-style-02 .woofc-area-bot .woofc-total {
+.woofc-area.woofc-style-02 .woofc-area-bot .woofc-data,
+.woofc-area.woofc-style-02 .woofc-area-bot .woofc-total {
   margin: 0 0 20px;
   font-size: 18px;
 }
@@ -4117,9 +4114,113 @@ div.nav-links {
   color: #e2401c;
 }
 
-.woofc-area.woofc-style-02 .woofc-area-bot .woofc-action .woofc-action-inner > div a {
+.woofc-area.woofc-style-02
+  .woofc-area-bot
+  .woofc-action
+  .woofc-action-inner
+  > div
+  a {
   border-width: 1px;
   font-weight: 400;
+}
+
+.product-content__inputs {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  grid-gap: 5px 10px;
+  max-width: 280px;
+}
+
+.product-content__inputs .qib-container {
+  display: flex !important;
+  background: #fff;
+  max-width: 100%;
+  margin: 0 !important;
+  order: 1;
+}
+
+.product-content__inputs .qib-container .buttons_added {
+  margin: 0 -2px;
+}
+
+.product-content__calc-input {
+  padding: 4px 40px 4px 5px;
+  font-size: 14px;
+  text-align: right;
+  width: 100%;
+}
+
+.product-content__inputs .qib-button:not(#qib_id):not(#qib_id),
+.product-content__inputs
+  .qib-container
+  .quantity
+  input.qty:not(#qib_id):not(#qib_id) {
+  height: 25px;
+  border-color: #000;
+}
+
+.product-content__inputs
+  .qib-container
+  .quantity
+  input.qty:not(#qib_id):not(#qib_id) {
+  width: 52px;
+}
+
+.product-content__inputs .single_add_to_cart_button {
+  padding: 10px !important;
+  background: #000;
+  color: #fff;
+}
+
+.single_add_to_cart_button {
+  grid-row: 1/3;
+  grid-column: 2/3;
+  order: 3;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+.product-content__inputs .single_add_to_cart_button:hover {
+  background: transparent;
+  color: #000;
+}
+
+.product-content__input-wrapper {
+  position: relative;
+  order: 2;
+}
+
+.product-content__input-wrapper span {
+  position: absolute;
+  right: 4px;
+  top: 6px;
+  font-size: 12px;
+}
+
+.wpcpo-total {
+  display: none;
+}
+
+.product-content__inputs--other .qib-button:not(#qib_id):not(#qib_id),
+.product-content__inputs--other
+  .qib-container
+  .quantity
+  input.qty:not(#qib_id):not(#qib_id) {
+  height: 45px;
+}
+
+.product-content__inputs--other .single_add_to_cart_button {
+  grid-row: 1/2;
+}
+
+
+.wpcpo-wrapper {
+  width: 100%;
+}
+
+.wpcpo-option-form .form-row {
+  width: 100%;
+  max-width: 280px;
 }
 
 @media (max-width: 1550px) {
@@ -4192,10 +4293,10 @@ div.nav-links {
     height: 60px;
   }
   .product-content > p,
-  .product-content__sample,
   .product-content__calc {
     margin: 0 0 15px;
   }
+
   .product-content__calc {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -4719,12 +4820,19 @@ div.nav-links {
     height: 180px;
   }
 
-  .woofc-area.woofc-style-02 .woofc-area-mid .woofc-item .woofc-item-inner .woofc-item-thumb {
+  .woofc-area.woofc-style-02
+    .woofc-area-mid
+    .woofc-item
+    .woofc-item-inner
+    .woofc-item-thumb {
     width: 100%;
     margin: 0;
   }
 
-  .woofc-area.woofc-style-02 .woofc-area-mid .woofc-item:first-child .woofc-item-inner {
+  .woofc-area.woofc-style-02
+    .woofc-area-mid
+    .woofc-item:first-child
+    .woofc-item-inner {
     display: grid;
     grid-gap: 30px 15px;
     grid-template-columns: 3fr 7fr;

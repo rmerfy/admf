@@ -86,7 +86,7 @@
                 <a href="mailto:info@admflooring.com">info@admflooring.com</a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://www.google.com/maps/dir//ADM+Flooring+Vernon,+CA+90058/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80c2c8d4a07d5fd9:0x53740df35d31fd4?sa=X&ved=2ahUKEwi3wu7Oxo_vAhXyHDQIHUjhBHwQ9RcwE3oECCwQBQ" target="_blank" rel="noopener noreferrer">
                   3340 Leonis Blvd.<br> Suite B
                   Vernon, CA 90058
                 </a>
@@ -106,46 +106,46 @@
               <button class="btn btn--black">Subscribe</button>
             </form>
             <div class="awards">
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.bbb.org/us/ca/vernon/profile/wholesalers-and-distributors/a-d-m-bathroom-design-1216-13082158">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/01.png" alt="BBB">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://admflooring.com/wp-content/uploads/2022/03/flooring_certification_2022.pdf">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/02.png" alt="ATCM">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://nwfa.org/">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/03.png" alt="nwfa">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://admflooring.com/shipping/">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/04.png" alt="Canada">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/05.png" alt="houzz 2014">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/06.png" alt="houzz 2015">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/07.png" alt="houzz 2016">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/08.png" alt="houzz 2017">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/09.png" alt="houzz 2018">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/10.png" alt="houzz 2018 design">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/11.png" alt="houzz 2019">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/12.png" alt="houzz 2020">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/13.png" alt="houzz 2021">
               </a>
-              <a href="#">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/hardwood-flooring-dealers-and-installers/adm-flooring-design-pfvwus-pf~1477051655">
                 <img src="<?echo get_template_directory_uri() ?>/assets/images/awards/14.png" alt="houzz 2022">
               </a>
             </div>

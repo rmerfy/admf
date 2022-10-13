@@ -121,18 +121,21 @@ if ( post_password_required() ) {
 				<?php 
 					$price = $product->get_price();
 					$price_sqft = get_field('price_sqft');
-					$box_sqft = get_field('box_sqft');
-					$pickup_price = bcdiv(($price_sqft*0.95)-0.1, 1, 2);
-					$free_delivery = ceil(500/$box_sqft);
+					$pickup_price = null;
 					if($price_sqft) {
+						$box_sqft = get_field('box_sqft');
+						$pickup_price = bcdiv(($price_sqft*0.95)-0.1, 1, 2);
+						$free_delivery = ceil(500/$box_sqft);
 						echo '<p class="product-content__price-sqft"><span>$'.$price_sqft.'</span> per sq. ft.</p>';
+						echo '<p class="product-content__price-carton"><span>$'.$price.'</span> per carton ('.$box_sqft.' sq. ft.)</p>';
+					} else {
+						echo '<span>$'.$price.'</span>';
 					}
-					echo '<p class="product-content__price-carton"><span>$'.$price.'</span> per carton ('.$box_sqft.' sq. ft.)</p>'
 				?>
 				</div>
-				<p class="product-content__price-pickup">
-				Local Pick-up Price: <span>$<?php echo $pickup_price?></span> per sq. ft.
-				</p>
+				<?php 
+					if($pickup_price) echo '<p class="product-content__price-pickup">Local Pick-up Price: <span>$'.$pickup_price.'</span> per sq. ft.</p>';
+				?>
 				<div class="product-content__add-to-cart">
 				<?php woocommerce_template_single_add_to_cart() ?>
 				</div>
@@ -147,28 +150,8 @@ if ( post_password_required() ) {
 				// if is all-flooring
 
 				if(in_array('23', $product_cat_ids)) :
-				
-				$box_sqft = get_field('box_sqft');
-				
 				?>
 				<p class="product-content__stair-trim">Don't forget to purchase <a class="hover-animation" href="/stair-and-trim/">Stair & Trim.</a></p>
-				<div class="product-content__calc">
-				<p>
-					Calculate how many boxes you'll need<br> to purchase based on square footage:
-				</p>
-				<input type="number" data-perbox="<?php echo $box_sqft ?>" class="product-content__calc-input" placeholder="Enter sq. ft. Needed">
-				<script>
-						
-					// calc square footage
-					let calcInput = document.querySelector('.product-content__calc-input');
-					let perBox = calcInput.dataset.perbox;
-					let qty = document.querySelector('.input-text.qty.text');
-					calcInput.addEventListener('keyup', (e) => {
-						let calcValue = e.target.value;
-						qty.value = Math.ceil(calcValue/perBox);
-					});
-				</script>
-				</div>
 				<p class="product-content__compare">Want to see similar colors? <a class="hover-animation" href="#">Compare.</a></p>
 				<p>Consider adding 7-12% for waste.</p>
 				<p>Free curbside delivery with any purchase of <b><?php echo $free_delivery ?></b> boxes or more.</p>

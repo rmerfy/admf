@@ -453,9 +453,18 @@ table.shop_table_responsive.my_account_orders .order-actions::before {
   clear: both;
 }
 .single-product div.product form.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 1.618em;
   padding: 1em 0;
 }
+
+.product-main__top-inner form.cart button[type='submit']:not(#qib_id):not(#qib_id), form.cart .qib-container + div:not(#qib_id):not(#qib_id) {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .single-product div.product form.cart::before,
 .single-product div.product form.cart::after {
   content: "";

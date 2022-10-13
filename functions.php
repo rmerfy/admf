@@ -332,13 +332,18 @@ function custom_view_product_button() {
 
 
 function before_add_to_cart_btn(){
-	echo '<p>Some custom text before</p>';
+	$box_sqft = get_field('box_sqft');
+	if($box_sqft) {
+		echo '<div class="product-content__inputs"><div class="product-content__input-wrapper"><input type="number" data-perbox="'.$box_sqft.'" class="product-content__calc-input"><span>sq.ft.</span></div>';
+	} else {
+		echo '<div class="product-content__inputs product-content__inputs--other">';
+	}
 }
 
 add_action( 'woocommerce_before_add_to_cart_button', 'before_add_to_cart_btn' );
 
 function after_add_to_cart_btn(){
-	echo '<p>Some custom text after</p>';
+	if(!get_field('box_sqft')) echo '</div>';
 }
 
 add_action( 'woocommerce_after_add_to_cart_button', 'after_add_to_cart_btn' );

@@ -177,7 +177,7 @@ get_header();
         <h3 class="title title--right decor decor--right">SATISFIED CUSTOMERS</h3>
         <ul class="customers-reviews__items">
         <li class="customers-reviews__item">
-            <a class="btn" href="#">Google</a>
+            <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/ADM+Flooring/@34.000081,-118.2070192,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2c8d4a07d5fd9:0x53740df35d31fd4!8m2!3d34.000081!4d-118.2070192">Google</a>
             <div class="customers-reviews__rate">
             <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
             <span class="customers-reviews__rate-text">
@@ -186,7 +186,7 @@ get_header();
             </div>
         </li>
         <li class="customers-reviews__item">
-            <a class="btn" href="#">Yelp</a>
+            <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.yelp.com/biz/adm-flooring-vernon">Yelp</a>
             <div class="customers-reviews__rate">
             <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
             <span class="customers-reviews__rate-text">
@@ -195,7 +195,7 @@ get_header();
             </div>
         </li>
         <li class="customers-reviews__item">
-            <a class="btn" href="#">Houzz</a>
+            <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/flooring-contractors/adm-flooring-pfvwus-pf~1477051655">Houzz</a>
             <div class="customers-reviews__rate">
             <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
             <span class="customers-reviews__rate-text">
@@ -204,7 +204,7 @@ get_header();
             </div>
         </li>
         <li class="customers-reviews__item">
-            <a class="btn" href="#">Trustpilot</a>
+            <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.trustpilot.com/review/admflooringdesign.com">Trustpilot</a>
             <div class="customers-reviews__rate">
             <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
             <span class="customers-reviews__rate-text">

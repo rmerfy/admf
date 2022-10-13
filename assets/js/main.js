@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     speed: 400,
     slidesPerView: 1,
     effect: "fade",
-    allowTouchMove:false,
+    allowTouchMove: false,
     fadeEffect: {
       crossFade: true,
     },
@@ -232,4 +232,34 @@ document.addEventListener("DOMContentLoaded", () => {
     searchLayout.classList.remove("search-bar-layout--active");
     body.classList.remove("lock");
   });
+
+  // calc square footage
+  let calcInput = document.querySelector(".product-content__calc-input");
+
+  if (calcInput) {
+    let perBox = calcInput.dataset.perbox;
+    let qty = document.querySelector(".input-text.qty.text");
+    let qtyPlus = document.querySelector(".plus.qib-button");
+    let qtyMinus = document.querySelector(".minus.qib-button");
+
+    function calcBoxNeeded() {
+      setTimeout(() => {
+        let calcValue = document.querySelector(".input-text.qty.text").value;
+        calcInput.value = Math.floor(calcValue * perBox);
+      }, 100);
+    }
+
+    calcBoxNeeded();
+
+    qtyPlus.addEventListener("click", calcBoxNeeded);
+    qtyMinus.addEventListener("click", calcBoxNeeded);
+    qty.addEventListener("keyup", calcBoxNeeded);
+
+    calcInput.addEventListener("keyup", () => {
+      setTimeout(() => {
+        let calcValue = document.querySelector(".product-content__calc-input").value;
+        qty.value = Math.ceil(calcValue / perBox);
+      }, 100);
+    });
+  }
 });
