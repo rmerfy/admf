@@ -76,12 +76,12 @@ get_header();
         </div>
         <div class="product-items decor decor--left">
         <h3 class="title"><a href="/stair-and-trim/">Stair & Trim</a></h3>
-        <ul class="product-items__list" data-category="stair-and-trim">
+        <ul class="product-items__list" data-category="stair-and-trim-wood">
         <?php
         $posts = get_posts([
             'numberposts' => 4,
             'post_type'   => 'product',
-            'product_cat' => 'stair-and-trim'
+            'product_cat' => 'stair-and-trim-wood'
         ]);
 
         foreach ( $posts as $post ){

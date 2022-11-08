@@ -41,8 +41,28 @@ get_header();
 
           <?php 
               $images = get_sub_field('images');
+              $cols;
+              $cols_value;
+              $images_sum = count($images);
+              switch ($images_sum) {
+                case 1:
+                  $cols = 2;
+                  break;
+                case 2:
+                  $cols = 2;
+                  break;
+                case 4:
+                  $cols = 4;
+                  break;
+
+                default:
+                  break;
+              }
+              if($cols && !is_mobile()) {
+			          $cols_value = 'style="column-count: '.$cols_value.'"';
+              }
               if( $images ): ?>
-                  <ul class="gallery">
+                  <ul class="gallery" <?php echo $cols ?>>
                       <?php foreach( $images as $image ): 
                       $gallery_name = preg_replace('/\s/', '-', get_sub_field('title'));
                       $alt = preg_replace('/-/', ' ', $image['title']);

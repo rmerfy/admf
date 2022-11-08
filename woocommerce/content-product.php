@@ -36,13 +36,31 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	?>
 	<div class="product-item__subtitle">
 	<?php
-	woocommerce_template_loop_price();
-	$term = get_the_terms( $post->ID, 'product_cat' );
-	if($term == 'all_flooring') echo '<span> per sq ft</span>';
+	
+	$price = $product->get_price();
+	$price_sqft = get_field('price_sqft');
+	if($price_sqft) {
+		echo '<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>'.$price_sqft.'</bdi> per sq. ft.</span></span>';
+	} else {
+		woocommerce_template_loop_price();
+	}
 	?>
 	</div>
 	</a>
 	<div class="product-item__btns">
 	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
+	<?php 
+		$terms = get_the_terms( $product->get_id(), 'product_cat' );
+		$product_cat_ids = [];
+		foreach ($terms as $term) {
+			$product_cat_ids[] = $term->term_id;
+		}
+
+		// if is all-flooring
+
+		if(in_array('23', $product_cat_ids)) :
+		?>
+		<a href="/?action=yith-woocompare-add-product&amp;id=<?php echo $product->id; ?>" class="compare btn" data-product_id="<?php echo $product->id; ?>" rel="nofollow">Compare</a>
+		<?php endif; ?>
 	</div>
 </li>

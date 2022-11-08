@@ -128,7 +128,7 @@ if ( post_password_required() ) {
 						$free_delivery = ceil(500/$box_sqft);
 						echo '<p class="product-content__price-sqft"><span>$'.$price_sqft.'</span> per sq. ft.</p>';
 						echo '<p class="product-content__price-carton"><span>$'.$price.'</span> per carton ('.$box_sqft.' sq. ft.)</p>';
-					} else {
+					} elseif (!$product->is_type( 'variable' )){
 						echo '<span>$'.$price.'</span>';
 					}
 				?>
@@ -152,7 +152,7 @@ if ( post_password_required() ) {
 				if(in_array('23', $product_cat_ids)) :
 				?>
 				<p class="product-content__stair-trim">Don't forget to purchase <a class="hover-animation" href="/stair-and-trim/">Stair & Trim.</a></p>
-				<p class="product-content__compare">Want to see similar colors? <a class="hover-animation" href="#">Compare.</a></p>
+				<p class="product-content__compare">Want to see similar colors? <a class="compare hover-animation" href="/?action=yith-woocompare-add-product&amp;id=<?php echo $product->id; ?>" data-product_id="<?php echo $product->id; ?>" rel="nofollow">Compare.</a></p>
 				<p>Consider adding 7-12% for waste.</p>
 				<p>Free curbside delivery with any purchase of <b><?php echo $free_delivery ?></b> boxes or more.</p>
 				<!-- <p>Also available in Oil: <a class="hover-animation" href="#">Ravenna Oil</a></p> -->

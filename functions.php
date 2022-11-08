@@ -51,6 +51,7 @@ function adm_setup() {
 		array(
 			'header-1' => esc_html__( 'Header 1', 'adm' ),
 			'header-2' => esc_html__( 'Header 2', 'adm' ),
+			'header-3' => esc_html__( 'Header 3', 'adm' ),
 			'footer-1' => esc_html__( 'Footer 1', 'adm' ),
 			'footer-2' => esc_html__( 'Footer 2', 'adm' ),
 		)
@@ -311,23 +312,7 @@ add_action( 'woocommerce_product_query', 'hide_products_without_image' );
 
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
- 
-add_action( 'woocommerce_after_shop_loop_item', 'custom_view_product_button', 10);
-function custom_view_product_button() {
-	global $product;
-	$link = $product->get_permalink();
-	$id = $product->id;
-	$is_flooring = false;
 
-	$cats = wp_get_post_terms( $id, 'product_cat' );
-	foreach($cats as $cat){
-		if (str_contains($cat->slug, 'all-flooring')) {
-			$is_flooring = true;
-		}
-	}
-
-	if($is_flooring) echo '<form class="cart" action="'.$link.'" method="post" enctype="multipart/form-data"><button type="submit" name="simple-add-to-cart" value="'.$id.'" id="woo-free-sample-button" class="add_to_cart_button button btn">Get sample</button></form>';
-}
 
 
 
@@ -347,3 +332,28 @@ function after_add_to_cart_btn(){
 }
 
 add_action( 'woocommerce_after_add_to_cart_button', 'after_add_to_cart_btn' );
+
+
+function free_shipping_rule( $is_available ) {
+	global $woocommerce;
+ 
+	// get cart contents
+	$cart_items = $woocommerce->cart->get_cart();
+
+	// loop through the items looking for one in the eligible array
+	foreach ( $cart_items as $key => $item ) {
+		if(get_field('box_sqft', $item['product_id'])) {
+			$box_sqft = get_field('box_sqft', $item['product_id']);
+			$qty = $item['quantity'];	
+			$sum_sq_ft = ceil($box_sqft*$qty);
+
+			if($sum_sq_ft >= 500) {
+				return true;
+			}
+		}
+	}
+	// nothing found return the default value
+	return $is_available;
+}
+add_filter( 'woocommerce_shipping_free_shipping_is_available', 'free_shipping_rule', 20 );
+

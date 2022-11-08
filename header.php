@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
 	<?php wp_head(); ?>
 </head>
 
@@ -55,15 +55,86 @@
 			<button aria-label="Close" class="menu__close">
 			&times;
 			</button>
-
-			<?php
-			$args = array(
-			 'menu_class' => 'menu__list menu__list--1',
-			'theme_location'=>'header-1',
-			'container'=> false,
-			);
-			wp_nav_menu($args);
-			?>
+			<ul class="menu__list menu__list--1">
+				<li class="mega-menu-btn">
+					<a href="/products/">Products</a>
+					<div class="mega-menu">
+						<div class="container">
+						<div class="mega-menu__inner">
+							<div class="mega-menu__item">
+							<a class="mega-menu__item-title" href="/all-flooring/">All flooring</a>
+							<div class="mega-menu__item-content">
+								<ul class="mega-menu__item-list">
+								<li>Plank width</li>
+								<li><a href="/all-flooring?filter_plank-width=10-1-4″%2C31-1-2″&query_type_plank-width=or">10-1/4" -> Up</a></li>
+								<li><a href="/all-flooring?filter_plank-width=8-5-8″%2C8-7-8″%2C9″%2C9-3-8″%2C9-1-2″&query_type_plank-width=or">8-5/8" -> 9-1/2"</a></li>
+								<li><a href="/all-flooring?filter_plank-width=7″%2C7-13-16″%2C7-1-2″%2C7-1-8″%2C6-1-2″%2C4″%2C4-3-4″&query_type_plank-width=or">Under 7-1/2"</a></li>
+								</ul>
+								<ul class="mega-menu__item-list">
+								<li>Grade</li>
+								<li><a href="/all-flooring?filter_grade=select-ab%2Cselect&query_type_grade=or">Select</a></li>
+								<li><a href="/all-flooring?filter_grade=abcd-character&query_type_grade=or">Character</a></li>
+								<li><a href="/all-flooring?filter_grade=rustic-select%2Crustic&query_type_grade=or">Rustic</a></li>
+								</ul>
+							</div>
+							</div>
+							<div class="mega-menu__item">
+							<a class="mega-menu__item-title" href="/engineered-hardwood-catalog/">Engineered Hardwood</a>
+							<div class="mega-menu__item-content">
+								<ul class="mega-menu__item-list">
+								<li>Finish</li>
+								<li><a href="/all-flooring?filter_finish=oil&query_type_finish=or">Oil</a></li>
+								<li><a href="/all-flooring?filter_finish=uv-lacquer&query_type_finish=or">Lacquer</a></li>
+								<li><a href="/all-flooring?filter_finish=unfinished&query_type_finish=or">Unfinished</a></li>
+								</ul>
+								<ul class="mega-menu__item-list">
+								<li>Color</li>
+								<li><a href="/all-flooring?filter_color=light&query_type_color=or">Light</a></li>
+								<li><a href="/all-flooring?filter_color=grey&query_type_color=or">Grey</a></li>
+								<li><a href="/all-flooring?filter_color=dark%2Cnatural&query_type_color=or">Natural/Dark</a></li>
+								</ul>
+							</div>
+							</div>
+							<div class="mega-menu__item">
+							<a class="mega-menu__item-title" href="/vinyl-catalog/">Vinyl<span class="new-label">new</span></a>
+							<div class="mega-menu__item-content">
+								<ul class="mega-menu__item-list">
+								<li>Pattern</li>
+								<li><a href="/all-flooring?filter_installation-pattern=versailles-panel&query_type_installation-pattern=or">Versailles</a></li>
+								<li><a href="/all-flooring?filter_installation-pattern=herringbone&query_type_installation-pattern=or">Herringbone</a></li>
+								<li><a href="/all-flooring?filter_installation-pattern=chevron&query_type_installation-pattern=or">Chevron</a></li>
+								</ul>
+							</div>
+							</div>
+							<div class="mega-menu__item">
+							<a class="mega-menu__item-title" href="/collections">Collections</a>
+							<div class="mega-menu__item-content">
+								<ul class="mega-menu__item-list">
+								<li>Species</li>
+								<li><a href="/all-flooring?filter_wood-species=american-walnut&query_type_wood-species=or">American Walnut</a></li>
+								<li><a href="/all-flooring?filter_wood-species=canadian-maple&query_type_wood-species=or">Canadian Maple</a></li>
+								<li><a href="/all-flooring?filter_wood-species=european-white-oak&query_type_wood-species=or">European White Oak</a></li>
+								</ul>
+							</div>
+							</div>
+							<div class="mega-menu__item">
+							<a class="mega-menu__item-title" href="/overstock/">Overstock</a>
+							<div class="mega-menu__item-content">
+								<ul class="mega-menu__item-list">
+								<li>Floor care & Accessories</li>
+								<li><a href="/adhesives/">Adhesives</a></li>
+								<li><a href="/stair-and-trim/">Stair & Trim</a></li>
+								<li><a href="/care-and-maintenance/">Care & Maintence</a></li>
+								</ul>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div><!-- mega-menu -->
+				</li>
+				<li><a href="/gallery/">Gallery</a></li>
+				<li><a href="/faq/">FAQS</a></li>
+			</ul>
 			<div class="logo logo--header">
 				<?php the_custom_logo(); ?>
 			</div>
@@ -75,80 +146,16 @@
 			);
 			wp_nav_menu($args);
 			?>
+			<?php
+			$args = array(
+			 'menu_class' => 'menu__list menu__list--3',
+			'theme_location'=>'header-3',
+			'container'=> false,
+			);
+			wp_nav_menu($args);
+			?>
 		</div>
-		<div class="mega-menu">
-			<div class="container">
-			<div class="mega-menu__inner">
-				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="/all-flooring/">All flooring</a>
-				<div class="mega-menu__item-content">
-					<ul class="mega-menu__item-list">
-					<li>Plank width</li>
-					<li><a href="/all-flooring?filter_plank-width=10-1-4″%2C31-1-2″&query_type_plank-width=or">10-1/4" -> Up</a></li>
-					<li><a href="/all-flooring?filter_plank-width=8-5-8″%2C8-7-8″%2C9″%2C9-3-8″%2C9-1-2″&query_type_plank-width=or">8-5/8" -> 9-1/2"</a></li>
-					<li><a href="/all-flooring?filter_plank-width=7″%2C7-13-16″%2C7-1-2″%2C7-1-8″%2C6-1-2″%2C4″%2C4-3-4″&query_type_plank-width=or">Under 7-1/2"</a></li>
-					</ul>
-					<ul class="mega-menu__item-list">
-					<li>Grade</li>
-					<li><a href="/all-flooring?filter_grade=select-ab%2Cselect&query_type_grade=or">Select</a></li>
-					<li><a href="/all-flooring?filter_grade=abcd-character&query_type_grade=or">Character</a></li>
-					<li><a href="/all-flooring?filter_grade=rustic-select%2Crustic&query_type_grade=or">Rustic</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="/engineered-hardwood-catalog/">Engineered Hardwood</a>
-				<div class="mega-menu__item-content">
-					<ul class="mega-menu__item-list">
-					<li>Finish</li>
-					<li><a href="/all-flooring?filter_finish=oil&query_type_finish=or">Oil</a></li>
-					<li><a href="/all-flooring?filter_finish=uv-lacquer&query_type_finish=or">Lacquer</a></li>
-					<li><a href="/all-flooring?filter_finish=unfinished&query_type_finish=or">Unfinished</a></li>
-					</ul>
-					<ul class="mega-menu__item-list">
-					<li>Color</li>
-					<li><a href="/all-flooring?filter_color=light&query_type_color=or">Light</a></li>
-					<li><a href="/all-flooring?filter_color=grey&query_type_color=or">Grey</a></li>
-					<li><a href="/all-flooring?filter_color=dark%2Cnatural&query_type_color=or">Natural/Dark</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="/vinyl-catalog/">Vinyl<span class="new-label">new</span></a>
-				<div class="mega-menu__item-content">
-					<ul class="mega-menu__item-list">
-					<li>Pattern</li>
-					<li><a href="#">Versailles</a></li>
-					<li><a href="#">Herringbone</a></li>
-					<li><a href="#">Chevron</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="#">Collections</a>
-				<div class="mega-menu__item-content">
-					<ul class="mega-menu__item-list">
-					<li>Species</li>
-					<li><a href="#">Oak</a></li>
-					<li><a href="#">Maple</a></li>
-					<li><a href="#">Walnut</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="mega-menu__item">
-				<a class="mega-menu__item-title" href="/overstock/">Overstock</a>
-				<div class="mega-menu__item-content">
-					<ul class="mega-menu__item-list">
-					<li>Floor care & Accessories</li>
-					<li><a href="/adhesives/">Adhesives</a></li>
-					<li><a href="/stair-and-trim/">Stair & Trim</a></li>
-					<li><a href="/care-and-maintenance/">Care & Maintence</a></li>
-					</ul>
-				</div>
-				</div>
-			</div>
-			</div>
-		</div>
+		
 		</nav>
 		<ul class="nav-bar">
 		<li class="nav-bar__phone-btn">

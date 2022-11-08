@@ -21,7 +21,7 @@ get_header();
 					}
 				?>
 			</div>
-			<h1 class="title title--center">Blog</h1>
+			<h1 class="title title--center"><?php the_archive_title() ?></h1>
         </div>
       </div>
       <section class="archive-posts">

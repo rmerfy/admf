@@ -89,7 +89,7 @@ get_header();
                 representative for orders outside of the US.
                 </p>
             </div>
-            <img class="wow animate__animated animate__fadeInRight" loading="lazy" src="<?echo get_template_directory_uri() ?>/assets/images/features/02.jpeg"
+            <img class="wow animate__animated animate__fadeInRight" loading="lazy" src="/wp-content/uploads/2022/11/Oceana-house-1.jpg"
                 alt="Hardwood Floor">
             </div>
         </div>
@@ -112,11 +112,11 @@ get_header();
                 <a class="hover-animation" href="tel:+18887296781">CALL US: +1 (888) 729 - 6781</a>
             </div>
             <div class="features__img-item wow animate__animated animate__fadeInUp animate__delay-1s">
-                <img src="<?echo get_template_directory_uri() ?>/assets/images/features/04.jpeg" alt="floor">
+                <img src="<?echo get_template_directory_uri() ?>/assets/images/features/04.jpeg" loading="lazy" alt="floor">
                 <span class="features__img-caption">Chevron Colors</span>
             </div>
             <div class="features__img-item wow animate__animated animate__fadeInUp animate__delay-2s">
-                <img src="<?echo get_template_directory_uri() ?>/assets/images/features/05.jpeg" alt="floor">
+                <img src="<?echo get_template_directory_uri() ?>/assets/images/features/05.jpeg" loading="lazy" alt="floor">
                 <span class="features__img-caption">Versailles Colors</span>
             </div>
             </div>
@@ -128,13 +128,13 @@ get_header();
     <div class="container">
         <div class="instagram__inner decor decor--right">
         <h3 class="features__item-title features__item-title--right">GET INSPIRED</h3>
-        <p style="text-align: center;">[INSTAGRAM PLUGIN]</p>
+        <?php echo do_shortcode('[instagram feed="4033"]') ?>
         </div>
     </div>
     </section>
     <div class="showcase">
     <div class="container">
-        <a class="btn btn--ts-black" href="#">DESIGNER SHOWCASE: JOIN OUR COMPETITION</a>
+        <a class="btn btn--ts-black" href="/designershowcase/">DESIGNER SHOWCASE: JOIN OUR COMPETITION</a>
     </div>
     </div>
     <section class="flooring">
@@ -179,7 +179,7 @@ get_header();
         <li class="customers-reviews__item">
             <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/ADM+Flooring/@34.000081,-118.2070192,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2c8d4a07d5fd9:0x53740df35d31fd4!8m2!3d34.000081!4d-118.2070192">Google</a>
             <div class="customers-reviews__rate">
-            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
+            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" loading="lazy" alt="rate">
             <span class="customers-reviews__rate-text">
                 4.5
             </span>
@@ -188,7 +188,7 @@ get_header();
         <li class="customers-reviews__item">
             <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.yelp.com/biz/adm-flooring-vernon">Yelp</a>
             <div class="customers-reviews__rate">
-            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
+            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" loading="lazy" alt="rate">
             <span class="customers-reviews__rate-text">
                 4.5
             </span>
@@ -197,7 +197,7 @@ get_header();
         <li class="customers-reviews__item">
             <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.houzz.com/professionals/flooring-contractors/adm-flooring-pfvwus-pf~1477051655">Houzz</a>
             <div class="customers-reviews__rate">
-            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
+            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" loading="lazy" alt="rate">
             <span class="customers-reviews__rate-text">
                 4.8
             </span>
@@ -206,7 +206,7 @@ get_header();
         <li class="customers-reviews__item">
             <a class="btn"  target="_blank" rel="noopener noreferrer" href="https://www.trustpilot.com/review/admflooringdesign.com">Trustpilot</a>
             <div class="customers-reviews__rate">
-            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" alt="rate">
+            <img class="svg" src="<?echo get_template_directory_uri() ?>/assets/images/icons/rate.svg" loading="lazy" alt="rate">
             <span class="customers-reviews__rate-text">
                 4.6
             </span>

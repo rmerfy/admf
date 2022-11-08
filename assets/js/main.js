@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     speed: 800,
     loop: true,
     effect: "fade",
+    allowTouchMove: false,
     fadeEffect: {
       crossFade: true,
     },
@@ -114,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     speed: 400,
     slidesPerView: 1,
     effect: "fade",
-    allowTouchMove: false,
+    // allowTouchMove: false,
     fadeEffect: {
       crossFade: true,
     },
@@ -125,25 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nextEl: ".product-thumbs-next",
       prevEl: ".product-thumbs-prev",
     },
-  });
-
-  // sub menu
-
-  const subMenuBtn = document.querySelector(".mega-menu-btn");
-  const subMenu = document.querySelector(".mega-menu");
-
-  subMenuBtn.addEventListener("mouseover", () => {
-    if (!subMenu.classList.contains("mega-menu--active")) {
-      subMenu.classList.add("mega-menu--active");
-    }
-  });
-
-  subMenuBtn.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (subMenu.classList.contains("mega-menu--active")) {
-        subMenu.classList.remove("mega-menu--active");
-      }
-    }, 500);
   });
 
   // fixed menu
@@ -221,11 +203,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchBar = document.querySelector(".search-bar");
   let searchOpen = document.querySelector(".nav-bar__search-btn button");
   let searchLayout = document.querySelector(".search-bar-layout");
+  let searchInput = document.querySelector(".dgwt-wcas-search-input");
 
   searchOpen.addEventListener("click", () => {
     searchBar.classList.add("search-bar--active");
     searchLayout.classList.add("search-bar-layout--active");
     body.classList.add("lock");
+    searchInput.focus();
   });
   searchLayout.addEventListener("click", () => {
     searchBar.classList.remove("search-bar--active");
@@ -262,4 +246,65 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 100);
     });
   }
+
+  // species variations
+
+  let variations = document.querySelector('.variations');
+  let species = document.querySelector('#pa_species');
+  if(variations && species) {
+
+    let variationsColors = ['wpcpo-634d92fb34521', 'wpcpo-634d92e7e4fe9', 'wpcpo-634d89178375b'];
+    variationsHide(variationsColors);
+
+    let resetBtn = document.querySelector('.reset_variations');
+
+    resetBtn.addEventListener('click', variationsReset);
+
+    species.addEventListener('change', (e) => {
+      let value = e.target.value;
+      
+      switch (value) {
+        case 'walnut':
+          variationsSwitcher('wpcpo-634d92fb34521');
+          break;
+        
+        case 'white-oak':
+          variationsSwitcher('wpcpo-634d92e7e4fe9');
+          break;
+
+        case 'maple':
+          variationsSwitcher('wpcpo-634d89178375b');
+          break;
+      
+        default:
+          break;
+      }
+    });
+
+    function variationsReset() {
+      let activeVariation = document.querySelector('.wpcpo-option-select.active');
+
+      
+      if(activeVariation) {
+        activeVariation.querySelector('select').selectedIndex = 0;
+        activeVariation.classList.remove('active');
+      }
+    }
+
+    function variationsSwitcher(id) {
+      // reset
+      variationsReset();
+        
+      // select
+      let variation = document.querySelector(`[for="${id}"]`);
+      variation.parentNode.classList.add('active');
+    }
+    function variationsHide(variations) {
+      variations.forEach(variation => {
+        let id = document.querySelector(`[for="${variation}"]`);
+        id.parentNode.classList.add('hidden');
+      });
+    }
+  }
+
 });
